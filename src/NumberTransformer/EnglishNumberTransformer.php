@@ -9,7 +9,7 @@ use NumberToWords\Service\NumberToTripletsConverter;
 
 class EnglishNumberTransformer implements NumberTransformer
 {
-    public function toWords(float $number): string
+    public function toWords(int $number): string
     {
         $dictionary = new EnglishDictionary();
         $numberToTripletsConverter = new NumberToTripletsConverter();

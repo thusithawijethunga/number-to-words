@@ -88,8 +88,12 @@ class SinhalaCurrencyTransformer implements CurrencyTransformer
             ->build();
 
         $decimal = (int) $amount;
-        //$fraction = abs($amount % 100);
-        $fraction = intval(fmod(floatval($amount), 1) * 100); // Multiply by 100 to move two decimal places to the left
+
+        // Extract the decimal part
+        $decimalPart = fmod($amount, 1);
+
+        // Convert to a string and remove the leading "0."
+        $fraction = substr(strval($decimalPart), 2);
 
         if ($fraction === 0) {
             $fraction = null;
@@ -117,14 +121,13 @@ class SinhalaCurrencyTransformer implements CurrencyTransformer
                 $return .= $currencyNames[0][0];
             }
             $return .= ' ' . trim($numberTransformer->toWords($decimal)) . 'යි';
-           
         }
 
         if (null !== $fraction) {
             $level = $fraction === 1 ? 0 : 1;
-            
+
             if ($decimal != 0) {
-                $return .= ' ' ;
+                $return .= ' ';
             }
 
             if ($level > 0) {

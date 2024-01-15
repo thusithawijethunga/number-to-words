@@ -14,8 +14,8 @@ class SinhalaDictionary implements Dictionary
 
     private static array $teens = ['දහය', 'එකොළහ', 'දොළහ', 'දහතුන', 'දහහතර', 'පහළොව', 'දහසය', 'දහහත', 'දහඅට', 'දහනවය'];
 
-    private static array $tens = ['', 'දහය', 'විසි', 'තිහ', 'හතළිහ', 'පනහ', 'හැට', 'හැත්තෑව', 'අසූව', 'නූයේ'];
-    private static array $tensOne = ['', 'දහය', 'විස්ස', 'තිහ', 'හතළිහ', 'පනහ', 'හැට', 'හැත්තෑව', 'අසූව', 'නූයේ'];
+    private static array $tens = ['', 'දහය', 'විසි', 'තිස්', 'හතලිස්', 'පනස්', 'හැට', 'හැත්තෑ', 'අසූ', 'අනූ'];
+    private static array $tensOne = ['', 'දහය', 'විස්ස', 'තිහ', 'හතළිහ', 'පනහ', 'හැට', 'හැත්තෑව', 'අසූව', 'අනූව'];
 
     private static string $hundred = 'සිය';
 

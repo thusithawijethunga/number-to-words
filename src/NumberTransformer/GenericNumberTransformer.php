@@ -20,7 +20,7 @@ class GenericNumberTransformer implements NumberTransformer
     private ?string $wordsSeparator = null;
     private ?string $exponentSeparator = null;
 
-    public function toWords(float $number): string
+    public function toWords(int $number): string
     {
         if ($number === 0) {
             return $this->dictionary->getZero();
@@ -40,7 +40,7 @@ class GenericNumberTransformer implements NumberTransformer
         return trim(implode($this->wordsSeparator, $words));
     }
 
-    private function getWordsBySplittingIntoTriplets(float $number): array
+    private function getWordsBySplittingIntoTriplets(int $number): array
     {
         $words = [];
         $triplets = $this->numberToTripletsConverter->convertToTriplets($number);

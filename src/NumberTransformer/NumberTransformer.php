@@ -9,10 +9,5 @@ interface NumberTransformer
     /**
      * @throws NumberToWordsException
      */
-    public function toWords(float $number): string;
-
-    /**
-     * @throws NumberToWordsException
-     */
-    // public function toWordsDecimal(float $number): string;
+    public function toWords(int $number): string;
 }
