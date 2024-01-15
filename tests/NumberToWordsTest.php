@@ -42,7 +42,7 @@ class NumberToWordsTest extends TestCase
         // $inWord = $numberTransformer->toWordsDecimal(0.0, 'LKR');
         // $this->assertEquals($inWord, '');
 
-        // //ශත x 1
+        //ශත x 1
         // $inWord = $numberTransformer->toWordsDecimal(0.01, 'LKR');
         // $this->assertEquals($inWord, 'ශත එකයි');
         // $inWord = $numberTransformer->toWordsDecimal(0.02, 'LKR');
@@ -266,8 +266,8 @@ class NumberToWordsTest extends TestCase
         // $this->assertEquals($inWord, 'රුපියල් එකයි ශත පහයි');
         // $inWord = $numberTransformer->toWordsDecimal(1.10, 'LKR');
         // $this->assertEquals($inWord, 'රුපියල් එකයි ශත දහයයි');
-        $inWord = $numberTransformer->toWordsDecimal(1.15, 'LKR');
-        $this->assertEquals($inWord, 'රුපියල් එකයි');
+        // $inWord = $numberTransformer->toWordsDecimal(1.15, 'LKR');
+        // $this->assertEquals($inWord, 'රුපියල් එකයි');
         // $inWord = $numberTransformer->toWordsDecimal(1.20, 'LKR');
         // $this->assertEquals($inWord, 'රුපියල් එකයි');
         // $inWord = $numberTransformer->toWordsDecimal(1.50, 'LKR');
@@ -285,7 +285,57 @@ class NumberToWordsTest extends TestCase
         // $inWord = $numberTransformer->toWordsDecimal(1.50, 'LKR');
         // $this->assertEquals($inWord, 'රුපියල් එකයි ශත පනහයි');
 
-        // $this->assertEquals($inWord, 'රුපියල් එක සිය විස්සයි ශත පනහයි1');
-        // $this->assertEquals($currencyToWords, 'ඩොලර් පනහයි ශත අනූ නවයයි');
+        $inWord = $numberTransformer->toWordsDecimal(56500.32, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් පනස් හය දහස් පන් සියයයි ශත තිස් දෙකයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(965265.32, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නව සිය හැට පහ දහස් දෙ සිය හැට පහයයි ශත තිස් දෙකයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(99, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(9999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(99999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(9999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(99999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(999999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නව සිය අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(9999999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නවය බිලියන නව සිය අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+        
+        $inWord = $numberTransformer->toWordsDecimal(99999999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් අනූ නවය බිලියන නව සිය අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(99999999999.99, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් අනූ නවය බිලියන නව සිය අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි ශත අනූ නවයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(999999999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නව සිය අනූ නවය බිලියන නව සිය අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(9999999999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නවය ට්‍රිලියන නව සිය අනූ නවය බිලියන නව සිය අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(99999999999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් අනූ නවය ට්‍රිලියන නව සිය අනූ නවය බිලියන නව සිය අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+        $inWord = $numberTransformer->toWordsDecimal(999999999999999, 'LKR');
+        $this->assertEquals($inWord, 'රුපියල් නව සිය අනූ නවය ට්‍රිලියන නව සිය අනූ නවය බිලියන නව සිය අනූ නවය මිලියන නව සිය අනූ නවය දහස් නව සිය අනූ නවයයයි');
+
+
     }
 }

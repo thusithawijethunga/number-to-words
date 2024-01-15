@@ -73,6 +73,11 @@ class SinhalaCurrencyTransformer implements CurrencyTransformer
         return $return;
     }
 
+    public function is_decimal($val)
+    {
+        return is_numeric($val) && floor($val) != $val;
+    }
+
     public function toWordsDecimal(float $amount, string $currency, ?CurrencyTransformerOptions $options = null): string
     {
         $dictionary = new SinhalaDictionary();
@@ -90,12 +95,16 @@ class SinhalaCurrencyTransformer implements CurrencyTransformer
         $decimal = (int) $amount;
 
         // Extract the decimal part
-        $decimalPart = fmod($amount, 1);
+        if($this->is_decimal($amount)){
+            $decimalPart = fmod($amount, 1);
+            // Convert to a string and remove the leading "0."
+            $fraction = (int) substr(round(strval($decimalPart), 2), 2);
+        }else{
+            $fraction = 0;
+        }
+        
 
-        // Convert to a string and remove the leading "0."
-        $fraction = substr(strval($decimalPart), 2);
-
-        if ($fraction === 0) {
+        if ($fraction == 0) {
             $fraction = null;
         }
 
@@ -120,7 +129,7 @@ class SinhalaCurrencyTransformer implements CurrencyTransformer
             } else {
                 $return .= $currencyNames[0][0];
             }
-            $return .= ' ' . trim($numberTransformer->toWords($decimal)) . 'යි';
+            $return .= ' ' . trim($numberTransformer->toWords($decimal)) . 'යයි';
         }
 
         if (null !== $fraction) {

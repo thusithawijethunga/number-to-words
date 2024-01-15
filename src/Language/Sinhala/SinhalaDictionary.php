@@ -11,6 +11,7 @@ class SinhalaDictionary implements Dictionary
     public const LANGUAGE_NAME_NATIVE = 'සිංහල';
 
     private static array $units = ['', 'එක', 'දෙක', 'තුන', 'හතර', 'පහ', 'හය', 'හත', 'අට', 'නවය'];
+    private static array $unitsOne = ['', 'එක්', 'දෙ', 'තුන්', 'හාර', 'පන්', 'හය', 'හත්', 'අට', 'නව'];
 
     private static array $teens = ['දහය', 'එකොළහ', 'දොළහ', 'දහතුන', 'දහහතර', 'පහළොව', 'දහසය', 'දහහත', 'දහඅට', 'දහනවය'];
 
@@ -90,8 +91,13 @@ class SinhalaDictionary implements Dictionary
         return self::$teens[$teen];
     }
 
-    public function getCorrespondingHundred(int $hundred): string
+    public function getCorrespondingHundred(int $hundred,int $teen=0): string
     {
-        return self::$units[$hundred] . ' ' . self::$hundred;
+        if ($teen == 0) {
+            return self::$unitsOne[$hundred] . ' ' . self::$hundred ;
+        } else {
+            return self::$units[$hundred] . ' ' . self::$hundred;
+        }
+        
     }
 }
