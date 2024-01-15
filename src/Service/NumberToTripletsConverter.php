@@ -4,12 +4,12 @@ namespace NumberToWords\Service;
 
 class NumberToTripletsConverter
 {
-    public function convertToTriplets(int $number): array
+    public function convertToTriplets(float $number): array
     {
         $triplets = [];
 
         while ($number > 0) {
-            $triplets[] = $number % 1000;
+            $triplets[] =(int) $number % 1000;
             $number = (int) ($number / 1000);
         }
 
