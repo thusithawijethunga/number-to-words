@@ -95,14 +95,11 @@ class SinhalaCurrencyTransformer implements CurrencyTransformer
         $decimal = (int) $amount;
 
         // Extract the decimal part
-        if($this->is_decimal($amount)){
-            $decimalPart = fmod($amount, 1);
-            // Convert to a string and remove the leading "0."
-            $fraction = (int) substr(round(strval($decimalPart), 2), 2);
-        }else{
+        if ($this->is_decimal($amount)) {
+            $fraction = round(($amount - intval($amount))*100);
+        } else {
             $fraction = 0;
         }
-        
 
         if ($fraction == 0) {
             $fraction = null;
@@ -129,7 +126,8 @@ class SinhalaCurrencyTransformer implements CurrencyTransformer
             } else {
                 $return .= $currencyNames[0][0];
             }
-            $return .= ' ' . trim($numberTransformer->toWords($decimal)) . 'යයි';
+            $sufix = is_null($fraction) ? 'ක් පමණි' : 'යි';
+            $return .= ' ' . trim($numberTransformer->toWords($decimal)) . $sufix;
         }
 
         if (null !== $fraction) {
@@ -149,7 +147,7 @@ class SinhalaCurrencyTransformer implements CurrencyTransformer
                 $return .= '' . $currencyNames[1][0];
             }
 
-            $return .= ' ' . trim($numberTransformer->toWords($fraction)) . 'යි';
+            $return .= ' ' . trim($numberTransformer->toWords($fraction)) . 'ක් පමණි';
         }
 
         return $return;

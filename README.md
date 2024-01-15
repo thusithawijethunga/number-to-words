@@ -132,3 +132,15 @@ A: If you come across a bug, please open an issue on our GitHub repository. As I
 **Q: My language is missing. Could it be added?**
 
 A: There's a high chance I don't know your language. Feel free to implement the missing language and open a pull request. You can use the existing languages as a reference.
+
+## Sinhala
+
+```php
+
+    $numberToWords = new NumberToWords();
+    $numberTransformer = $numberToWords->getCurrencyTransformer('si');
+
+    $inWord = $numberTransformer->toWordsDecimal(0.01, 'LKR'); // outputs "ශත එකක් පමණි"
+    $inWord = $numberTransformer->toWordsDecimal(3521.00, 'LKR'); // outputs "රුපියල් තුන දහස් පන් සිය විසි එකක් පමණි"
+
+```
