@@ -12,7 +12,7 @@ Welcome to `number-to-words`, a PHP utility that seamlessly transforms numeric v
 Add package to your composer.json by running:
 
 ```
-$ composer require kwn/number-to-words
+$ composer require minsiha-it/number-to-words
 ```
 
 ## Usage
